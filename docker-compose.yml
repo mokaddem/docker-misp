@@ -6,10 +6,11 @@ services:
     image: namshi/smtp
 
   redis:
-    image: redis:5.0.6
+    image: redis:7.0.8
+    command: redis-server --save '' --appendonly no
 
   db:
-    image: mysql:8.0.19
+    image: mysql:8.0.32
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
