@@ -9,6 +9,9 @@ change_php_vars(){
         sed -i "s/upload_max_filesize = .*/upload_max_filesize = 50M/" "$FILE"
         sed -i "s/post_max_size = .*/post_max_size = 50M/" "$FILE"
         sed -i "s/pm.max_children = .*/pm.max_children = 100/" "$FILE"
+
+        sed -i "s/session.save_handler = .*/session.save_handler = redis/" "$FILE"
+        sed -i "s/;session.save_path = .*/session.save_path = 'tcp:\/\/redis:6379'/" "$FILE"
     done
     for FILE in /etc/php/*/fpm/pool.d/www.conf
     do
